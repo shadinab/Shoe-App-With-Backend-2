@@ -2,7 +2,12 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './index.css';
 
+
 const ShoePage = () => {
+  // const baseURL =
+  //   import.meta.env.VITE_ENV === 'development'
+  //     ? import.meta.env.VITE_BASE_URL_DEVELOPMENT
+  //     : import.meta.env.VITE_BASE_URL_PRODUCTION;
   const navigate = useNavigate();
   const [shoe, setShoe] = useState(JSON.parse(localStorage.getItem('shoe')));
   const [isEditing, setIsEditing] = useState(false);
@@ -21,7 +26,8 @@ const ShoePage = () => {
 
   const handleSave = () => {
     // Assuming you have an API endpoint like '/api/shoes/:id' where :id is the shoe's ID
-    const apiUrl = `http://localhost:5000/api/v1/shoes/${shoe.id}`;
+    const apiUrl = `${import.meta.env.VITE_BASE_URL}/shoes/${shoe.id}`;
+    // const apiUrl = `baseURL/shoes/${shoe.id}`;
 
     // Prepare the updated data to send to the API
     const updatedShoeData = {
@@ -76,7 +82,8 @@ const ShoePage = () => {
 
   const handleDelete = () => {
   // Replace ':id' with the actual ID of the shoe you want to delete
-  const apiUrl = `http://localhost:5000/api/v1/shoes/${shoe.id}`;
+  // const apiUrl = `${baseURL}/shoes/${shoe.id}`;
+  const apiUrl = `${import.meta.env.VITE_BASE_URL}/shoes/${shoe.id}`;
 
   // Make a DELETE request to remove the shoe data
   fetch(apiUrl, {

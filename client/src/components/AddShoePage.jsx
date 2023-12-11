@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import './index.css';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
-// const baseURL = import.meta.env.VITE_ENV==='development'
-// ? import.meta.env.VITE_BASE_URL_PRODUCTION;
+
 
 const AddShoePage = () => {
+  // const baseURL =
+  //   import.meta.env.VITE_ENV === 'development'
+  //     ? import.meta.env.VITE_BASE_URL_DEVELOPMENT
+  //     : import.meta.env.VITE_BASE_URL_PRODUCTION;
   const navigate = useNavigate();
   const [shoeData, setShoeData] = useState({
     // name: '',
@@ -71,7 +74,8 @@ const AddShoePage = () => {
     try {
       // Send a POST request to your API endpoint
       const response = await fetch(
-        'http://localhost:5000/api/v1/shoes/addingshoes',
+        // `${baseURL}/shoes/addingshoes`,
+        `${import.meta.env.VITE_BASE_URL}/shoes/addingshoes`,
         {
           method: 'POST',
           headers: {

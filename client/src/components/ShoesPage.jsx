@@ -7,6 +7,11 @@ import ShoePage from './ShoePage';
 import EmailData from './EmailData';
 
 function MyComponent() {
+  // const baseURL =
+  //   import.meta.env.VITE_ENV === 'development'
+  //     ? import.meta.env.VITE_BASE_URL_DEVELOPMENT
+  //     : import.meta.env.VITE_BASE_URL_PRODUCTION;
+
   const [data, setData] = useState([]);
   const [showImages, setShowImages] = useState(false);
   const navigate = useNavigate();
@@ -17,7 +22,8 @@ function MyComponent() {
   useEffect(() => {
     // This code will run when the component mounts
     axios
-      .get('http://localhost:5000/api/v1/shoes/getAllShoes') // Replace with your API endpoint
+
+      .get(`${import.meta.env.VITE_BASE_URL}/shoes/getAllShoes`)
       .then((response) => {
         setData(response.data.data);
 

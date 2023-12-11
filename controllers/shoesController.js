@@ -61,7 +61,7 @@ export const addShoe = asyncHandler(async (req, res, next) => {
 // @desc      Update a shoe
 // @route     PUT /api/v1/shoes/:id
 
-// @desc      Update a shoe
+// @desc      Update a shoe`
 // @route     PUT /api/v1/shoes/:id
 export const updateShoe = asyncHandler(async (req, res, next) => {
   // Check if the shoe exists
